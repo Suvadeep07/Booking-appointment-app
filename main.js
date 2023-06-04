@@ -1,4 +1,5 @@
 
+
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
@@ -20,7 +21,14 @@ function onSubmit (e){
             name : nameInput.value,
             email : emailInput.value,
         };
-        localStorage.setItem('user', JSON.stringify(user));
+        let users =localStorage.getItem('users');
+        if(users){
+            users=JSON.parse(users);
+        }else {
+            users=[];
+        }
+        users.push(user);
+        localStorage.setItem('users',JSON.stringify(users))
         
 
         //clear fields 
@@ -29,4 +37,3 @@ function onSubmit (e){
     }
     
 }
-    
