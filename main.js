@@ -1,3 +1,4 @@
+
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
@@ -15,8 +16,12 @@ function onSubmit (e){
         const li = document.createElement('li');
         li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
         userList.appendChild(li);
-        localStorage.setItem('name', nameInput.value);
-        localStorage.setItem('email', emailInput.value);
+        const user={
+            name : nameInput.value,
+            email : emailInput.value,
+        };
+        localStorage.setItem('user', JSON.stringify(user));
+        
 
         //clear fields 
         nameInput.value="";
